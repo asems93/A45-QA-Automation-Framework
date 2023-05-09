@@ -12,19 +12,19 @@ public class Homework16 extends BaseTest {
 
     public void registrationNavigation(){
 
-    ChromeOptions options = new ChromeOptions();
-    options.addArguments("--remote-allow-origins=*");
-
-    WebDriver driver = new ChromeDriver(options);
-    driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-
-    String url = "https://bbb.testpro.io/";
-    driver.get(url);
+//    ChromeOptions options = new ChromeOptions();
+//    options.addArguments("--remote-allow-origins=*");
+//
+//    WebDriver driver = new ChromeDriver(options);
+//    driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+//
+//    String url = "https://bbb.testpro.io/";
+//    driver.get(url);
 
     WebElement registrationLink = driver.findElement(By.cssSelector("[id='hel']"));
     registrationLink.click();
 
-    String registrationUrl = "http://bbb.testpro.io/registration.php";
+    String registrationUrl = "https://bbb.testpro.io/registration.php";
     Assert.assertEquals(driver.getCurrentUrl(), registrationUrl);
 
     driver.quit();

@@ -13,7 +13,7 @@ public class BaseTest {
 
     public static WebDriver driver = null;
 
-    public static String url = "";
+    public static String url = "https://bbb.testpro.io/";
 
     @BeforeSuite
     static void setupClass() {
@@ -31,15 +31,14 @@ public class BaseTest {
     }
 
     @BeforeMethod
-    @Parameters({"BaseURL"})
-    public void launchBrowser(String BaseURL) {
+    // @Parameters({"BaseURL"})
+    public void launchBrowser(){
         //      Added ChromeOptions argument below to fix websocket error
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
 
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        url = BaseURL;
         navigateToPage();
     }
     @AfterMethod
