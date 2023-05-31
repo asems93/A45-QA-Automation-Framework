@@ -20,10 +20,10 @@ public class BaseTest {
         WebDriverManager.chromedriver().setup();
     }
 
-    @DataProvider(name="IncorrectLoginData")
+    @DataProvider(name = "IncorrectLoginData")
     public static Object[][] getDataFromDataProviders() {
 
-        return new Object[][] {
+        return new Object[][]{
                 {"invalid@mail.com", "invalidPass"},
                 {"demo@class.com", ""},
                 {"", ""}
@@ -31,7 +31,7 @@ public class BaseTest {
     }
 
     @BeforeMethod
-    @Parameters({"BaseURL"})
+    @Parameters({"BaseUrl"})
     public void launchBrowser(String BaseURL) {
         //      Added ChromeOptions argument below to fix websocket error
         ChromeOptions options = new ChromeOptions();
@@ -42,6 +42,7 @@ public class BaseTest {
         url = BaseURL;
         navigateToPage();
     }
+
     @AfterMethod
     public void closeBrowser() {
         driver.quit();
@@ -75,24 +76,24 @@ public class BaseTest {
         saveButton.click();
     }
 
-    public static void provideProfileName(String randomName) {
-        WebElement profileName = driver.findElement(By.cssSelector("[name='name']"));
-        profileName.clear();
-        profileName.sendKeys(randomName);
-    }
+        public static void provideProfileName (String randomName){
+            WebElement profileName = driver.findElement(By.cssSelector("[name='name']"));
+            profileName.clear();
+            profileName.sendKeys(randomName);
+        }
 
-    public static void provideCurrentPassword(String password) {
-        WebElement currentPassword = driver.findElement(By.cssSelector("[name='current_password']"));
-        currentPassword.clear();
-        currentPassword.sendKeys(password);
-    }
+        public static void provideCurrentPassword (String password){
+            WebElement currentPassword = driver.findElement(By.cssSelector("[name='current_password']"));
+            currentPassword.clear();
+            currentPassword.sendKeys(password);
+        }
 
-    public static String generateRandomName() {
-        return UUID.randomUUID().toString().replace("-", "");
-    }
+        public static String generateRandomName () {
+            return UUID.randomUUID().toString().replace("-", "");
+        }
 
-    public static void clickAvatarIcon() {
-        WebElement avatarIcon = driver.findElement(By.cssSelector("img.avatar"));
-        avatarIcon.click();
+        public static void clickAvatarIcon () {
+            WebElement avatarIcon = driver.findElement(By.cssSelector("img.avatar"));
+            avatarIcon.click();
+        }
     }
-}
